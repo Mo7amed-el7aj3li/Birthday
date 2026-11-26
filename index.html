@@ -450,18 +450,34 @@
 
       </div>
 
-      <!-- Action Button Leading to Final Scene -->
+      <!-- Action Button Leading to Animated LED Letter Wall Scene -->
       <div class="memories-action-wrapper">
         <button id="to-final-btn" class="cute-btn final-proceed-btn">
-          <span class="btn-icon">💗</span>
-          <span class="btn-text">One Final Wish 💗</span>
+          <span class="btn-icon">💖</span>
+          <span class="btn-text">One Final Wish 💖</span>
           <span class="btn-sparkle">✨</span>
         </button>
       </div>
     </section>
 
     <!-- ========================================================
-         9. FINAL BIRTHDAY SCENE (THE ETERNAL WISH)
+         9. THE GRAND FINALE: FULL-SCREEN ANIMATED LED LETTER WALL
+         ======================================================== -->
+    <section id="stage-hacker" class="stage-section stage-hacker-fullscreen hidden">
+      <canvas id="led-canvas" class="hacker-fullscreen-canvas"></canvas>
+      <div class="hacker-vignette"></div>
+
+      <!-- Subtle Floating Navigation Pill -->
+      <div class="led-top-controls">
+        <button id="led-wish-card-btn" class="led-action-pill" title="Read Birthday Wish Card">
+          <span class="pill-icon">💌</span>
+          <span class="pill-text">My Final Wish Card</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         10. FINAL BIRTHDAY SCENE (THE ETERNAL WISH)
          ======================================================== -->
     <section id="stage-5" class="stage-section hidden">
       <!-- Grand Animated Beating Heart with Rose Gold Glow -->
@@ -499,28 +515,19 @@
             If I could make one wish, it would be to have you in every lifetime. ❤️
           </p>
           <p class="final-message-line-3" id="final-line-3">
-            Forever yours, my princess. 💗
+            Forever yours, my princess. 💖
           </p>
         </div>
       </article>
 
-      <!-- Grand Finale LED Letter Wall Trigger -->
+      <!-- Button to Return to LED Animation Wall -->
       <div class="final-action-wrapper" id="final-action-wrapper">
-        <button id="to-led-wall-btn" class="cute-btn led-wall-launch-btn">
-          <span class="btn-icon">💌</span>
-          <span class="btn-text">Our Secret LED Wall 🔐✨</span>
+        <button id="back-to-led-btn" class="cute-btn led-wall-launch-btn">
+          <span class="btn-icon">✨</span>
+          <span class="btn-text">Watch LED Animation ✨</span>
           <span class="btn-sparkle">💖</span>
         </button>
       </div>
-    </section>
-
-    <!-- ========================================================
-         10. THE GRAND FINALE: FULL-SCREEN ANIMATED LED LETTER WALL
-         ======================================================== -->
-    <section id="stage-hacker" class="stage-section stage-hacker-fullscreen hidden">
-      <canvas id="led-canvas" class="hacker-fullscreen-canvas"></canvas>
-      <div class="hacker-vignette"></div>
-      <button id="led-back-btn" class="led-back-btn" title="Back to Final Wish">❦ Return to Wish ❦</button>
     </section>
 
   </main>
