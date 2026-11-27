@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>For My Princess Manmony ❤️</title>
+  <meta name="description" content="A romantic, cinematic birthday surprise love letter and memory album for Manmony.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Particle Canvas for Floating Hearts, Sparkles, and Falling Petals -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Ambient Glow Orbs for Soft Romantic Atmosphere -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <!-- Cinematic Background Blur & Darken Overlay for Envelope Opening -->
+  <div class="cinematic-overlay" id="cinematic-overlay"></div>
+
+  <!-- Background Music Audio: Cinnamon Girl by Lana Del Rey -->
+  <audio id="birthdayAudio" preload="auto" loop>
+    <source src="assets/audio/cinnamon-girl.mp3" type="audio/mpeg">
+    <source src="assets/audio/voice.mp4" type="audio/mp4">
+    <source src="assets/audio/voice.mp3" type="audio/mpeg">
+    <source src="assets/cinnamon-girl.mp3" type="audio/mpeg">
+    <source src="assets/voice.mp4" type="audio/mp4">
+    <source src="cinnamon-girl.mp3" type="audio/mpeg">
+    <source src="voice.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ========================================================
+       2. LOADING SCREEN
+       ======================================================== -->
+  <div id="loading-screen" class="loading-screen" aria-live="polite">
+    <div class="loader-content">
+      <div class="loader-heart-wrapper">
+        <div class="loader-pulse-glow"></div>
+        <div class="loader-heart">
+          <svg viewBox="0 0 32 29.6" class="loader-heart-svg">
+            <defs>
+              <linearGradient id="loaderHeartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff8fa3"/>
+                <stop offset="50%" stop-color="#ff4d6d"/>
+                <stop offset="100%" stop-color="#b76e79"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#loaderHeartGrad)" d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2 C32,3.8,28.2,0,23.6,0z"/>
+          </svg>
+        </div>
+        <div class="loader-sparkles">
+          <span class="l-sparkle ls-1">✨</span>
+          <span class="l-sparkle ls-2">🌸</span>
+          <span class="l-sparkle ls-3">✨</span>
+        </div>
+      </div>
+      <p class="loader-text">Preparing something special for you…</p>
+      <div class="loader-track">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Elegant Floating Music Control (iOS SF-Style Mute / Unmute) -->
+  <aside class="music-widget" aria-label="Music player">
+    <button id="music-btn" class="music-pill" title="Mute / Unmute Music" aria-label="Mute or unmute music" aria-pressed="false">
+      <span class="music-icon-wrapper">
+        <svg class="music-speaker-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+          <path class="speaker-wave wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path class="speaker-wave wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          <line class="mute-line" x1="2" y1="2" x2="22" y2="22"></line>
+        </svg>
+      </span>
+      <span class="music-label" id="music-label">Cinnamon Girl 🎵</span>
+      <span class="music-bars" id="music-bars">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </span>
+    </button>
+  </aside>
+
+  <!-- Main Multi-Stage Experience Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- ========================================================
+         3. SECRET PASSWORD SCREEN & 4. CINEMATIC ENVELOPE
+         ======================================================== -->
+    <section id="stage-1" class="stage-section active">
+      <header class="title-header">
+        <h1 class="stage-title">Someone has a special surprise for you…</h1>
+      </header>
+
+      <!-- Center Elegant Envelope with Heart-Shaped Wax Seal -->
+      <div class="envelope-container" id="envelope-container">
+        <div class="envelope" id="envelope">
+          <!-- Envelope interior lining -->
+          <div class="envelope-back"></div>
+
+          <!-- Letter sliding sneak peek -->
+          <div class="envelope-letter-sneak" id="letter-sneak">
+            <div class="sneak-line sneak-line-1"></div>
+            <div class="sneak-line sneak-line-2"></div>
+            <div class="sneak-heart">❤️</div>
+          </div>
+
+          <!-- Envelope pocket fold -->
+          <div class="envelope-pocket"></div>
+
+          <!-- Envelope top flap with 3D folding -->
+          <div class="envelope-top-flap" id="top-flap">
+            <!-- Heart-Shaped Wax Seal -->
+            <div class="wax-seal" id="wax-seal" title="Sealed with love">
+              <svg class="wax-heart-svg" viewBox="0 0 32 29.6">
+                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2 C32,3.8,28.2,0,23.6,0z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password Card Form (iOS Glassmorphism) -->
+      <div class="password-card" id="password-card">
+        <p class="password-subtitle">Enter the secret password</p>
+
+        <form id="password-form" autocomplete="off" onsubmit="return false;">
+          <div class="input-wrapper">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="3" ry="3"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input 
+              type="password" 
+              id="password-input" 
+              class="password-input" 
+              placeholder="Enter secret password..." 
+              autocomplete="off"
+              spellcheck="false"
+              required
+            >
+            <button type="button" id="toggle-pwd-btn" class="pwd-peek-btn" title="Peek password" aria-label="Toggle password visibility">
+              <svg id="eye-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+
+          <div id="error-message" class="error-msg" aria-live="polite">
+            Oops! That’s not the magic password, princess! 🥺
+          </div>
+
+          <button type="submit" id="unlock-btn" class="cute-btn unlock-btn">
+            <span class="btn-text">Unlock My Surprise 💌</span>
+            <span class="btn-sparkle">✨</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. BIRTHDAY LETTER
+         ======================================================== -->
+    <section id="stage-3" class="stage-section hidden">
+      <!-- Glowing Animated Heart Above Letter -->
+      <div class="glowing-heart-container">
+        <div class="heart-pulse-glow"></div>
+        <div class="beating-heart" id="beating-heart">
+          <svg viewBox="0 0 32 29.6" class="heart-svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff8fa3" />
+                <stop offset="45%" stop-color="#ff4d6d" />
+                <stop offset="100%" stop-color="#b76e79" />
+              </linearGradient>
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <path fill="url(#heartGradient)" filter="url(#glow)" d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2 C32,3.8,28.2,0,23.6,0z"/>
+          </svg>
+        </div>
+        <div class="heart-sparkles">
+          <span class="h-sparkle s-1">✨</span>
+          <span class="h-sparkle s-2">🌸</span>
+          <span class="h-sparkle s-3">✨</span>
+        </div>
+      </div>
+
+      <!-- Stationery Paper Letter Card -->
+      <article class="romantic-letter-card" id="romantic-letter-card">
+        <div class="letter-texture-overlay"></div>
+        <div class="letter-filigree-border"></div>
+        <div class="letter-corner-accent top-left">❦</div>
+        <div class="letter-corner-accent top-right">❦</div>
+        <div class="letter-corner-accent bottom-left">❦</div>
+        <div class="letter-corner-accent bottom-right">❦</div>
+
+        <div class="letter-content-inner">
+          <!-- Elegant Birthday Date Display -->
+          <div class="letter-date-tag">
+            <span class="date-flower">🌸</span>
+            <span class="date-text">5.12.2006</span>
+            <span class="date-flower">🌸</span>
+          </div>
+
+          <div class="letter-body">
+            <h2 class="letter-greeting" id="typewriter-line-1"></h2>
+            <p class="letter-paragraph" id="typewriter-line-2"></p>
+            <p class="letter-closing" id="typewriter-line-3"></p>
+            <span class="typewriter-cursor" id="typewriter-cursor-1">|</span>
+          </div>
+
+          <!-- Small Elegant Signature -->
+          <div class="letter-signature hidden" id="letter-signature">
+            <span class="signature-text">Forever yours ❤️</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ========================================================
+         7. SECOND SURPRISE SCENE
+         ======================================================== -->
+    <section id="stage-4" class="stage-section hidden">
+      <div class="stage-header-badge">✨ From My Heart To Yours ✨</div>
+
+      <!-- Romantic Love Card -->
+      <article class="romantic-letter-card surprise-card" id="surprise-love-card">
+        <div class="letter-texture-overlay"></div>
+        <div class="letter-filigree-border"></div>
+        <div class="letter-corner-accent top-left">❦</div>
+        <div class="letter-corner-accent top-right">❦</div>
+        <div class="letter-corner-accent bottom-left">❦</div>
+        <div class="letter-corner-accent bottom-right">❦</div>
+
+        <div class="letter-content-inner">
+          <div class="card-soft-icon">💌</div>
+          <div class="letter-body">
+            <p class="surprise-paragraph" id="surprise-line-1"></p>
+            <p class="surprise-paragraph" id="surprise-line-2"></p>
+            <p class="surprise-paragraph" id="surprise-line-3"></p>
+            <span class="typewriter-cursor" id="typewriter-cursor-2">|</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Action Button Leading to Photo Memories Section -->
+      <div class="stage-action-wrapper hidden" id="stage-4-action">
+        <button id="to-memories-btn" class="cute-btn gift-action-btn">
+          <span class="btn-icon">🎁</span>
+          <span class="btn-text">Open your gift 🎁</span>
+          <span class="btn-sparkle">✨</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. OUR LITTLE MEMORIES – PHOTO SECTION
+         ======================================================== -->
+    <section id="stage-memories" class="stage-section hidden">
+      <header class="memories-header">
+        <div class="memories-badge">📷 Captured Moments 📷</div>
+        <h2 class="memories-title">Our Little Memories 💗</h2>
+        <p class="memories-subtitle">Every picture holds a little piece of my heart.</p>
+      </header>
+
+      <!-- Vertical Alternating Photo Memories Container -->
+      <div class="memories-list">
+
+        <!-- Memory 1: Photo Left, Text Right on Desktop -->
+        <article class="memory-card memory-alt-1" data-reveal>
+          <div class="polaroid-wrapper">
+            <div class="polaroid-pin">📌</div>
+            <div class="polaroid-frame">
+              <div class="polaroid-img-box">
+                <img 
+                  src="assets/photos/memory-01.jpg" 
+                  alt="My beautiful baby" 
+                  class="memory-img" 
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <!-- Fallback placeholder -->
+                <div class="memory-placeholder">
+                  <span class="placeholder-icon">📷💗</span>
+                  <span class="placeholder-title">My beautiful baby</span>
+                  <span class="placeholder-path">assets/photos/memory-01.jpg</span>
+                </div>
+              </div>
+              <div class="polaroid-caption-bar">
+                <span class="polaroid-tag">Little Manmony</span>
+                <span class="polaroid-heart">💗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="memory-caption-card">
+            <div class="caption-date-tag">🌸 Sweetest Angel 🌸</div>
+            <h3 class="caption-title">My beautiful baby</h3>
+            <p class="caption-text">“My beautiful baby ❤️”</p>
+          </div>
+        </article>
+
+        <!-- Memory 2: Text Left, Photo Right on Desktop -->
+        <article class="memory-card memory-alt-2" data-reveal>
+          <div class="polaroid-wrapper">
+            <div class="polaroid-pin">📌</div>
+            <div class="polaroid-frame">
+              <div class="polaroid-img-box">
+                <img 
+                  src="assets/photos/memory-02.jpg" 
+                  alt="Me & You, it's as if I own the world" 
+                  class="memory-img" 
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <!-- Fallback placeholder -->
+                <div class="memory-placeholder">
+                  <span class="placeholder-icon">📷💗</span>
+                  <span class="placeholder-title">Me & You</span>
+                  <span class="placeholder-path">assets/photos/memory-02.jpg</span>
+                </div>
+              </div>
+              <div class="polaroid-caption-bar">
+                <span class="polaroid-tag">Me & You</span>
+                <span class="polaroid-heart">❤️</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="memory-caption-card">
+            <div class="caption-date-tag">🌍 My Whole World 🌍</div>
+            <h3 class="caption-title">Me & You</h3>
+            <p class="caption-text">“Me & You, it’s as if I own the world 🌍❤️”</p>
+          </div>
+        </article>
+
+        <!-- Memory 3: Photo Left, Text Right on Desktop -->
+        <article class="memory-card memory-alt-3" data-reveal>
+          <div class="polaroid-wrapper">
+            <div class="polaroid-pin">📌</div>
+            <div class="polaroid-frame">
+              <div class="polaroid-img-box">
+                <img 
+                  src="assets/photos/memory-03.jpg" 
+                  alt="Special memory between us" 
+                  class="memory-img" 
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <!-- Fallback placeholder -->
+                <div class="memory-placeholder">
+                  <span class="placeholder-icon">📷💗</span>
+                  <span class="placeholder-title">Special memory between us</span>
+                  <span class="placeholder-path">assets/photos/memory-03.jpg</span>
+                </div>
+              </div>
+              <div class="polaroid-caption-bar">
+                <span class="polaroid-tag">Special Memory</span>
+                <span class="polaroid-heart">💖</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="memory-caption-card">
+            <div class="caption-date-tag">🌸 Forever & Always 🌸</div>
+            <h3 class="caption-title">Special Memory</h3>
+            <p class="caption-text">“Special memory between us ❤️”</p>
+          </div>
+        </article>
+
+        <!-- Memory 4: Text Left, Photo Right on Desktop -->
+        <article class="memory-card memory-alt-4" data-reveal>
+          <div class="polaroid-wrapper">
+            <div class="polaroid-pin">📌</div>
+            <div class="polaroid-frame">
+              <div class="polaroid-img-box">
+                <img 
+                  src="assets/photos/memory-04.jpg" 
+                  alt="She is like a flower carrying a flower" 
+                  class="memory-img" 
+                  style="object-position: center 20%;"
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <!-- Fallback placeholder -->
+                <div class="memory-placeholder">
+                  <span class="placeholder-icon">📷💗</span>
+                  <span class="placeholder-title">Flower of My Life</span>
+                  <span class="placeholder-path">assets/photos/memory-04.jpg</span>
+                </div>
+              </div>
+              <div class="polaroid-caption-bar">
+                <span class="polaroid-tag">My Flower</span>
+                <span class="polaroid-heart">🌹</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="memory-caption-card">
+            <div class="caption-date-tag">🌹 The Flower of My Life 🌹</div>
+            <h3 class="caption-title">My Beautiful Rose</h3>
+            <p class="caption-text">“She is like a flower carrying a flower, but more beautiful than a flower, she is the flower of my life 🌹❤️”</p>
+          </div>
+        </article>
+
+        <!-- Memory 5: Photo Left, Text Right on Desktop -->
+        <article class="memory-card memory-alt-5" data-reveal>
+          <div class="polaroid-wrapper">
+            <div class="polaroid-pin">📌</div>
+            <div class="polaroid-frame">
+              <div class="polaroid-img-box">
+                <img 
+                  src="assets/photos/memory-05.jpg" 
+                  alt="The most beautiful thing my eyes have ever seen" 
+                  class="memory-img" 
+                  style="object-position: center 15%;"
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <!-- Fallback placeholder -->
+                <div class="memory-placeholder">
+                  <span class="placeholder-icon">📷💗</span>
+                  <span class="placeholder-title">Most Beautiful</span>
+                  <span class="placeholder-path">assets/photos/memory-05.jpg</span>
+                </div>
+              </div>
+              <div class="polaroid-caption-bar">
+                <span class="polaroid-tag">Breathtaking</span>
+                <span class="polaroid-heart">✨</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="memory-caption-card">
+            <div class="caption-date-tag">✨ Pure Perfection ✨</div>
+            <h3 class="caption-title">My Beautiful Princess</h3>
+            <p class="caption-text">“The most beautiful thing my eyes have ever seen ❤️”</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Action Button Leading to Animated LED Letter Wall Scene -->
+      <div class="memories-action-wrapper">
+        <button id="to-final-btn" class="cute-btn final-proceed-btn">
+          <span class="btn-icon">💖</span>
+          <span class="btn-text">One Final Wish 💖</span>
+          <span class="btn-sparkle">✨</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         9. THE GRAND FINALE: FULL-SCREEN ANIMATED LED LETTER WALL
+         ======================================================== -->
+    <section id="stage-hacker" class="stage-section stage-hacker-fullscreen hidden">
+      <canvas id="led-canvas" class="hacker-fullscreen-canvas"></canvas>
+      <div class="hacker-vignette"></div>
+
+      <!-- Subtle Floating Navigation Pill -->
+      <div class="led-top-controls">
+        <button id="led-wish-card-btn" class="led-action-pill" title="Read Birthday Wish Card">
+          <span class="pill-icon">💌</span>
+          <span class="pill-text">My Final Wish Card</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         10. FINAL BIRTHDAY SCENE (THE ETERNAL WISH)
+         ======================================================== -->
+    <section id="stage-5" class="stage-section hidden">
+      <!-- Grand Animated Beating Heart with Rose Gold Glow -->
+      <div class="grand-heart-container">
+        <div class="grand-heart-halo"></div>
+        <div class="grand-beating-heart">
+          <svg viewBox="0 0 32 29.6" class="grand-heart-svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="grandHeartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff758f" />
+                <stop offset="35%" stop-color="#ff4d6d" />
+                <stop offset="75%" stop-color="#c9184a" />
+                <stop offset="100%" stop-color="#b76e79" />
+              </linearGradient>
+              <filter id="grandGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <path fill="url(#grandHeartGrad)" filter="url(#grandGlow)" d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2 C32,3.8,28.2,0,23.6,0z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Final Romantic Card -->
+      <article class="romantic-letter-card final-card" id="final-card">
+        <div class="letter-texture-overlay"></div>
+        <div class="letter-filigree-border"></div>
+        
+        <div class="letter-content-inner">
+          <p class="final-message-line-1" id="final-line-1">
+            I hope I get to celebrate every birthday with you. ❤️
+          </p>
+          <p class="final-message-line-2" id="final-line-2">
+            If I could make one wish, it would be to have you in every lifetime. ❤️
+          </p>
+          <p class="final-message-line-3" id="final-line-3">
+            Forever yours, my princess. 💖
+          </p>
+        </div>
+      </article>
+
+      <!-- Button to Return to LED Animation Wall -->
+      <div class="final-action-wrapper" id="final-action-wrapper">
+        <button id="back-to-led-btn" class="cute-btn led-wall-launch-btn">
+          <span class="btn-icon">✨</span>
+          <span class="btn-text">Watch LED Animation ✨</span>
+          <span class="btn-sparkle">💖</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
